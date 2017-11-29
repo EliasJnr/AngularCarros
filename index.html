@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+
+		
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+		
+		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="node_modules/font-awesome-4.7.0/css/font-awesome.min.css">
+
+	</head>
+
+
+<body ng-app="myapp" ng-controller="carroController">
+	<h2 class="text-center"> Cadastrar/Editar Carro</h2>
+ 
+    <form  ng-submit="submitCarro()" id="form">
+
+       	<div class="form-group">
+        	<label>Nome:</label>
+			<input hidden ng-model="form.id" size="60"> 
+        	<input class="form-control" ng-model="form.nome" size="60">
+        </div>
+
+       	<div class="form-group">
+        	<label>Descrição:</label> 
+        	<input type="text" ng-model="form.descricao" size="60" class="form-control"/>
+        </div>
+
+
+       	<div class="form-group">
+        	<label>Tipo:</label>
+        	<input type="text" ng-model="form.tipo" size="60" class="form-control"/>
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+        
+<br>
+
+<table class="table" >
+	<thead>
+    <tr>
+        <th>Código</th>
+        <th>Descrição</th>
+        <th>Nome</th>
+        <th>Tipo</th>
+        <th>Opções</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="carro in carros">
+        <td> {{carro.id}} </td>
+        <td> {{carro.desc}} </td>
+        <td> {{carro.nome}} </td>
+         <td> {{carro.tipo}} </td>
+       		<td><a ng-click="editarCarro(carro)"><i class="fa fa-pencil"></i></a> / <a ng-click="excluirCarro(carro)"><i class="fa-trash fa"></i></a></td>
+    </tr>
+    </tbody>
+</table>
+
+	<script type="text/javascript" src="controllerCrud.js"></script>
+
+<!-- Importando o jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
+  <!-- Importando o js do bootstrap -->
+  <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+</body>
+</html>
